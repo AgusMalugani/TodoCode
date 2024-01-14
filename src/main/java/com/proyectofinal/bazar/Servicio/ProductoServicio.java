@@ -55,7 +55,7 @@ public class ProductoServicio implements IProductoServicio{
     @Override
     public List<Producto> faltaStock() {
         List<Producto>listaProducto  = this.productos();
-        List<Producto>faltante = null;
+        List<Producto>faltante = new ArrayList<Producto>();
         
         for (Producto aux : listaProducto) {
             

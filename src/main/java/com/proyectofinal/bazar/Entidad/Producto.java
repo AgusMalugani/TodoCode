@@ -4,21 +4,14 @@
  */
 package com.proyectofinal.bazar.Entidad;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- *
- * @author Usuario
- */
+
 @Entity
 @Getter @Setter
 public class Producto {
@@ -29,14 +22,7 @@ public class Producto {
     private String marca;
     private double costo;
     private Integer cantidadDisponible;
-   /*
-    @ManyToOne()
-    @JoinColumn(name="codProducto")
-    @JsonIgnore()
-    private Venta venta;
-   */ 
-    // muchos productos pueden estar en una  venta
-    
+
     
 
     public Producto() {

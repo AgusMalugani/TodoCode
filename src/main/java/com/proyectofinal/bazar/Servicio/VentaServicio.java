@@ -10,6 +10,7 @@ import com.proyectofinal.bazar.Entidad.Venta;
 import com.proyectofinal.bazar.Repositorio.IVentaRepositorio;
 import com.proyectofinal.bazar.excepciones.MiException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,8 +85,8 @@ public class VentaServicio implements IVentaServicio {
          
         
         if(respuesta.isPresent()){
-          Venta venta  = respuesta.get();
-        ventaRepo.save(venta);
+          Venta venta  = v;
+        this.guardar(venta);  // tengo q ver como devolver el producto q se descuenta y evitar q se descuente dos veces.
         return venta;
         }
         return null; // si estaba en la bd, retorna la  venta, y si no, retorna null
@@ -110,7 +111,7 @@ public class VentaServicio implements IVentaServicio {
     @Override
     public String montoVentasPorDia(LocalDate fechaVenta) {
         List<Venta> listaVentas = this.ventas();
-        List<Venta> ventasDelDia = null;
+        List<Venta> ventasDelDia = new ArrayList<Venta>();
         int cont = 0;
         for (Venta aux : listaVentas) {
             if (aux.getFechaVenta().equals(fechaVenta)) {

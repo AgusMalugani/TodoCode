@@ -5,21 +5,17 @@
 package com.proyectofinal.bazar.Entidad;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- *
- * @author Usuario
- */
+
 @Entity
 @Getter
 @Setter
@@ -31,12 +27,12 @@ public class Cliente {
     private String nombre;
     private String apellido;
     private String dni;
-    //un cliente puede tener muchas ventas
-  /* 
-@OneToMany(cascade = CascadeType.ALL)
-private List<Venta> ventas;
+
     
-*/
+@OneToMany(mappedBy = "cliente")
+@JsonIgnore()
+private List<Venta> ventas;
+
     public Cliente() {
     }
     public Cliente(Long idCliente, String nombre, String apellido, String dni) {

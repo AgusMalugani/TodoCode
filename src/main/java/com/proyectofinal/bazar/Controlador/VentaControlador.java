@@ -37,7 +37,6 @@ public class VentaControlador {
     private IVentaServicio ventaServi;
     
     @PostMapping("/crear")
-    @Transactional
     public String crear(@RequestBody Venta v){
             try {
                 ventaServi.guardar(v);
@@ -49,7 +48,6 @@ public class VentaControlador {
     }
     
     @DeleteMapping("/borrar/{codVenta}")
-    @Transactional
     public String borrar(@PathVariable Long codVenta){
         ventaServi.borrar(codVenta);
     
@@ -68,7 +66,6 @@ public class VentaControlador {
     }
     
     @PutMapping("/modificar/{codVenta}")
-    @Transactional
     public Venta modificar(@RequestBody Venta v){
         
             try {
@@ -84,7 +81,7 @@ public class VentaControlador {
         return ventaServi.productosDeVenta(codVenta);
     }
     
-    @GetMapping("/{fechaVenta}")
+    @GetMapping("/detalleDia/{fechaVenta}")
     public String ventasDelDia(@PathVariable LocalDate fechaVenta){
         
         return ventaServi.montoVentasPorDia(fechaVenta);
